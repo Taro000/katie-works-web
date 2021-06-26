@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block custome_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/works.css' %}" />
+{% endblock %}
+
+{% block contents %}
+    <main>
+      <div id="top-menu">
+        <div class="top-left">
+          <h1>Crafts</h1>
+          <ul>
+            <li>All</li>
+            <li>Logo</li>
+            <li>Catalogue</li>
+            <li>Advertisement</li>
+            <li>Others</li>
+          </ul>
+        </div>
+        <!--top-left-->
+        <div class="top-right"></div>
+        <!--top-right-->
+      </div>
+      <!--top-menu-->
+      <div id="contents">
+        <ul>
+          {% if crafts_length >= 1 %}
+          <li>
+            {% for craft in object_list|slice:'3' %}
+                <div class="content-card">
+                    <div class="card-img">
+                        <img src="{{ craft.thumbnail.url }}" alt="" />
+                    </div>
+                    <h3>{{ craft.name }}</h3>
+                </div>
+            {% endfor %}
+          </li>
+          {% endif %}
+          {% if crafts_length >= 4 %}
+              <li>
+                {% for craft in object_list|slice:'3:6' %}
+                    <div class="content-card">
+                        <div class="card-img">
+                            <img src="{{ craft.thumbnail.url }}" alt="" />
+                        </div>
+                        <h3>{{ craft.name }}</h3>
+                    </div>
+                {% endfor %}
+              </li>
+          {% endif %}
+          {% if crafts_length >= 6 %}
+          <li>
+            {% for craft in object_list|slice:'6:9' %}
+                <div class="content-card">
+                    <div class="card-img">
+                        <img src="{{ craft.thumbnail.url }}" alt="" />
+                    </div>
+                    <h3>{{ craft.name }}</h3>
+                </div>
+            {% endfor %}
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!--contents-->
+      <div id="bottom-menu"></div>
+      <!--bottom-menu-->
+    </main>
+{% endblock %}

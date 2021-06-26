@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block custome_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/contact.css' %}" />
+{% endblock %}
+
+{% block contents %}
+    <main>
+      <div id="top-menu" class="fade-in fade-in-up">
+        <h1>Contact</h1>
+      </div>
+      <!--top-menu-->
+      <div id="contact-form" class="fade-in fade-in-up">
+        <form action="post">
+          <ul>
+            <li>
+              <h4>お名前</h4>
+              <input type="text" required />
+            </li>
+            <li>
+              <h4>メールアドレス</h4>
+              <input type="text" required />
+            </li>
+            <li>
+              <h4>TEL</h4>
+              <input type="text" required />
+            </li>
+            <li>
+              <h4>お問い合わせ内容</h4>
+              <textarea name="" id="" cols="30" rows="10" required></textarea>
+            </li>
+          </ul>
+          <input class="submit-button" type="submit" value="Submit" />
+        </form>
+      </div>
+      <!--contact-form-->
+    </main>
+{% endblock %}

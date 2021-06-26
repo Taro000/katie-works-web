@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block custome_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/index.css' %}" />
+{% endblock %}
+
+{% block contents %}
+    <main>
+      <div id="top-title">
+        <div class="top-left">
+          <h1>About</h1>
+          <div class="title-frame"></div>
+          <!--title-frame-->
+        </div>
+        <!--top-left-->
+        <div class="top-right">
+          <p>
+            I have a pen.I have a pen.I have a pen.I have a pen.I have a pen.I
+            have a pen.I have a pen.I have a pen.I have a pen.I have a pen.I
+            have a pen.I have a pen.I have a pen.I have a pen.I have a pen.
+          </p>
+        </div>
+        <!--top-right-->
+      </div>
+      <!--top-title-->
+      <div id="top-img"><img src="{% static 'img/works-keybord.jpg' %}" alt="" /></div>
+      <!--top-img-->
+      <div id="company">
+        <div class="company-message">
+          <h1 class="fade-in fade-in-up">Company</h1>
+          <ul class="fade-in fade-in-up">
+            <li>
+              <h3 class="message">Message</h3>
+              <h2 class="message-body">七転び八起き</h2>
+            </li>
+            <li>
+              <p class="message-text">
+                I have a pen.I have a pen.I have a pen.I have a pen.I have a
+                pen.I have a pen.I have a pen.I have a pen.I have a pen.I have a
+                pen.I have a pen.I have a pen.I have a pen.I have a pen.I have a
+                pen.
+              </p>
+            </li>
+          </ul>
+          <div id="company-img"></div>
+          <!--company-img-->
+        </div>
+        <!--company-message-->
+        <div class="company-info fade-in fade-in-up">
+          <div class="info-list">
+            <h3>Infomation</h3>
+            <ul>
+              <li>
+                <div class="info-title"><h3>社名</h3></div>
+                <div class="info-text"><h3>{{ company.name }}</h3></div>
+              </li>
+              <li>
+                <div class="info-title"><h3>代表者</h3></div>
+                <div class="info-text"><h3>{{ company.owner }}</h3></div>
+              </li>
+              <li>
+                <div class="info-title"><h3>事業内容</h3></div>
+                <div class="info-text">
+                  <h3>{{ company.business }}</h3>
+                </div>
+              </li>
+              <li>
+                <div class="info-title"><h3>TEL</h3></div>
+                <div class="info-text"><h3>{{ company.tel }}</h3></div>
+              </li>
+              <li>
+                <div class="info-title"><h3>FAX</h3></div>
+                <div class="info-text"><h3>{{ company.fax }}</h3></div>
+              </li>
+              <li>
+                <div class="info-title"><h3>メール</h3></div>
+                <div class="info-text">
+                  <h3>{{ company.email }}</h3>
+                </div>
+              </li>
+              <li>
+                <div class="info-title"><h3>所在地</h3></div>
+                <div class="info-text">
+                  <h3>
+                    {{ company.address }}
+                  </h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--info-list-->
+          <div class="info-map fade-in fade-in-up">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232.261221271602!2d135.50768553526714!3d34.69804471336112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e6c2f3f67d3f%3A0x44dd753d26bd6b2a!2z44CSNTMwLTAwNDcg5aSn6Ziq5bqc5aSn6Ziq5biC5YyX5Yy66KW_5aSp5rqA77yV5LiB55uu77yY4oiS77yYIOmrmeapi-ODk-ODq-WIpemkqA!5e0!3m2!1sja!2sjp!4v1624013809492!5m2!1sja!2sjp"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+          <!--info-map-->
+        </div>
+        <!--company-info-->
+      </div>
+      <!--company-->
+    </main>
+{% endblock %}
+
+{% block custome_js %}
+    <script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block custome_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/works.css' %}" />
+{% endblock %}
+
+{% block contents %}
+    <main>
+        {{ object.name }}
+        {{ object.text }}
+    </main>
+{% endblock %}
