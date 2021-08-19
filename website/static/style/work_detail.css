@@ -1,0 +1,94 @@
+.container {
+  width: auto;
+  margin: 0 10%;
+}
+
+#img-section {
+  height: 63vw;
+  width: 100%;
+  position: relative;
+}
+
+#thumbnail {
+  height: 45vw;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.thumbnail-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.thumbnail-img.show {
+  display: block;
+}
+
+#img-carousel {
+  height: 15vw;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  overflow-y: hidden;
+}
+
+#img-carousel ul {
+  height: 105%;
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
+.img-window {
+  flex: 0 0 30%;
+  margin: 0 10px;
+  overflow: hidden;
+}
+
+.img-window img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.img-window img:hover {
+  transform: scale(1.1);
+}
+
+#text-section {
+  width: 100%;
+}
+
+#title {
+  height: 15vh;
+  width: 100%;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#title h1 {
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+#title h5 {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+#text-section p {
+  width: 100%;
+  margin: 5vh 0 10vh 0;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}

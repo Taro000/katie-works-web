@@ -1,8 +1,12 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DeleteView, FormView
+from django.shortcuts import redirect
+from django.views.generic import TemplateView, ListView, DetailView, FormView, CreateView
+from django.contrib.messages.views import SuccessMessageMixin
 from .models import *
-from django.urls import reverse_lazy
+from django.urls import reverse
 from .forms import *
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib import messages
 # Create your views here.
 
 
@@ -27,8 +31,18 @@ class WorksView(ListView):
         context['works_length'] = len(self.object_list)
         return context
 
+    def get_queryset(self):
+        q_category = self.request.GET.get('q')
+        print(q_category)
+        if not q_category:
+            object_list = Work.objects.all()
+        else:
+            object_list = Work.objects.filter(category=q_category)
+            print(object_list)
+        return object_list
 
-class WorkDetailView(DeleteView):
+
+class WorkDetailView(DetailView):
     template_name = 'website/work_detail.html'
     model = Work
 
@@ -45,12 +59,15 @@ class CraftsView(ListView):
         return context
 
 
-class CraftDetailView(DeleteView):
-    template_name = 'website/craft_detail.html'
+class CraftDetailView(DetailView):
+    template_name = 'website/work_detail.html'
     model = Craft
 
 
-class ContactView(FormView):
+class ContactView(CreateView, SuccessMessageMixin):
     template_name = 'website/contact.html'
-    success_url = reverse_lazy('website:index')
-    form_class = ContactForm
+    model = Contact
+    fields = ['name', 'send_by', 'tel', 'content']
+
+    def get_success_url(self):
+        return reverse('index')

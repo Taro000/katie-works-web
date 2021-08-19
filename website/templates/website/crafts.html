@@ -2,69 +2,105 @@
 
 {% load static %}
 {% block custome_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style/works.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'dest_style/works.min.css' %}"/>
 {% endblock %}
 
 {% block contents %}
     <main>
-      <div id="top-menu">
-        <div class="top-left">
-          <h1>Crafts</h1>
-          <ul>
-            <li>All</li>
-            <li>Logo</li>
-            <li>Catalogue</li>
-            <li>Advertisement</li>
-            <li>Others</li>
-          </ul>
+        <div id="top-menu">
+            <div class="top-left">
+                <h1>Crafts</h1>
+            </div>
+            <!--top-left-->
+            <div class="top-right">
+                <div class="page-button">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}"><h3>Prev</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Prev</h3></a>
+                    {% endif %}
+                </div>
+                <!--page-button-->
+                <div class="page-button">
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><h3>Next</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Next</h3></a>
+                    {% endif %}
+                </div>
+                <!--page-button-->
+            </div>
+            <!--top-right-->
         </div>
-        <!--top-left-->
-        <div class="top-right"></div>
-        <!--top-right-->
-      </div>
-      <!--top-menu-->
-      <div id="contents">
-        <ul>
-          {% if crafts_length >= 1 %}
-          <li>
-            {% for craft in object_list|slice:'3' %}
-                <div class="content-card">
-                    <div class="card-img">
-                        <img src="{{ craft.thumbnail.url }}" alt="" />
-                    </div>
-                    <h3>{{ craft.name }}</h3>
+        <!--top-menu-->
+        <div id="contents">
+            <ul>
+                {% if crafts_length >= 1 %}
+                    <li class="fade-in fade-in-up">
+                        {% for craft in object_list|slice:'3' %}
+                            <div class="content-card">
+                                <a href="{% url 'craft_detail' craft.pk %}">
+                                    <div class="card-img">
+                                        <img src="{{ craft.thumbnail.thumbnail.url }}" alt=""/>
+                                    </div>
+                                    <h3>{{ craft.name }}</h3>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </li>
+                {% endif %}
+                {% if crafts_length >= 4 %}
+                    <li class="fade-in fade-in-up">
+                        {% for craft in object_list|slice:'3:6' %}
+                            <div class="content-card">
+                                <a href="{% url 'craft_detail' craft.pk %}">
+                                    <div class="card-img">
+                                        <img src="{{ craft.thumbnail.thumbnail.url }}" alt=""/>
+                                    </div>
+                                    <h3>{{ craft.name }}</h3>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </li>
+                {% endif %}
+                {% if crafts_length >= 6 %}
+                    <li class="fade-in fade-in-up">
+                        {% for craft in object_list|slice:'6:9' %}
+                            <div class="content-card">
+                                <a href="{% url 'craft_detail' craft.pk %}">
+                                    <div class="card-img">
+                                        <img src="{{ craft.thumbnail.thumbnail.url }}" alt=""/>
+                                    </div>
+                                    <h3>{{ craft.name }}</h3>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--contents-->
+        <div id="bottom-menu">
+            <div class="bottom-right">
+                <div class="page-button">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}"><h3>Prev</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Prev</h3></a>
+                    {% endif %}
                 </div>
-            {% endfor %}
-          </li>
-          {% endif %}
-          {% if crafts_length >= 4 %}
-              <li>
-                {% for craft in object_list|slice:'3:6' %}
-                    <div class="content-card">
-                        <div class="card-img">
-                            <img src="{{ craft.thumbnail.url }}" alt="" />
-                        </div>
-                        <h3>{{ craft.name }}</h3>
-                    </div>
-                {% endfor %}
-              </li>
-          {% endif %}
-          {% if crafts_length >= 6 %}
-          <li>
-            {% for craft in object_list|slice:'6:9' %}
-                <div class="content-card">
-                    <div class="card-img">
-                        <img src="{{ craft.thumbnail.url }}" alt="" />
-                    </div>
-                    <h3>{{ craft.name }}</h3>
+                <!--page-button-->
+                <div class="page-button">
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><h3>Next</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Next</h3></a>
+                    {% endif %}
                 </div>
-            {% endfor %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-      <!--contents-->
-      <div id="bottom-menu"></div>
-      <!--bottom-menu-->
+                <!--page-button-->
+            </div>
+            <!--bottom-right-->
+        </div>
+        <!--bottom-menu-->
     </main>
 {% endblock %}

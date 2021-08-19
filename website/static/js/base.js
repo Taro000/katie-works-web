@@ -1,3 +1,6 @@
+// 読み込み時 Topへ
+$(function (){$('html,body').animate({ scrollTop: 0 }, '1');});
+
 $('.header-menu').on('click',function(){
     $('.menu-line-top').toggleClass('active-line-top');
     $('.menu-line-bottom').toggleClass('active-line-bottom');

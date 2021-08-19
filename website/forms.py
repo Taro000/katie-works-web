@@ -1,6 +1,6 @@
 from django import forms
 from django.conf import settings
-from django.core.mail import BadHeaderError, send_mail
+from django.core.mail import EmailMessage
 from django.http import HttpResponse
 
 

@@ -6,85 +6,87 @@
     <title>katie works</title>
     <!--リセットCSS-->
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-      crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+            integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+            crossorigin="anonymous"
     />
     <!--Fontawsome-->
     <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
     />
     <!--カスタムCSS-->
-    <link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'dest_style/base.min.css' %}"/>
     {% block custome_css %}
     {% endblock %}
 </head>
+{% block loding_window %}
+{% endblock %}
 <body>
-    <header>
-      <div class="logo-space">
-        <a href="{% url 'index' %}"><img src="{% static 'img/katie-works-logo.png' %}" alt="" /></a>
-      </div>
-      <!--logo-space-->
-      <ul class="header-left">
+<header>
+    <div class="logo-space">
+        <a href="{% url 'index' %}"><img src="{% static 'img/katie-works-logo.png' %}" alt=""/></a>
+    </div>
+    <!--logo-space-->
+    <ul class="header-left">
         <li><a class="grey-a" href="{% url 'works' %}">Works</a></li>
         <li><a class="grey-a" href="{% url 'crafts' %}">Crafts</a></li>
         <li class="header-menu">
-          <span class="menu-line menu-line-top"></span>
-          <span class="menu-line menu-line-bottom"></span>
+            <span class="menu-line menu-line-top"></span>
+            <span class="menu-line menu-line-bottom"></span>
         </li>
-      </ul>
-    </header>
-    <nav class="full-nav">
-      <div class="nav-wrap">
+    </ul>
+</header>
+<nav class="full-nav">
+    <div class="nav-wrap">
         <ul class="nav-menu">
-          <li class="nav-item fade-in fade-in-up delay11">
-            <a href="{% url 'index' %}">Home</a>
-          </li>
-          <li class="nav-item fade-in fade-in-up delay12">
-            <a href="{% url 'works' %}">Works</a>
-          </li>
-          <li class="nav-item fade-in fade-in-up delay13">
-            <a href="{% url 'crafts' %}">Crafts</a>
-          </li>
-          <li class="nav-item fade-in fade-in-up delay14">
-            <a href="{% url 'contact' %}">Contact</a>
-          </li>
+            <li class="nav-item fade-in fade-in-up delay11">
+                <a href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item fade-in fade-in-up delay12">
+                <a href="{% url 'works' %}">Works</a>
+            </li>
+            <li class="nav-item fade-in fade-in-up delay13">
+                <a href="{% url 'crafts' %}">Crafts</a>
+            </li>
+            <li class="nav-item fade-in fade-in-up delay14">
+                <a href="{% url 'contact' %}">Contact</a>
+            </li>
         </ul>
-      </div>
-      <!--nav-wrap-->
-    </nav>
-    {% block contents %}
-    {% endblock %}
-    <footer>
-      <div class="footer-left">
+    </div>
+    <!--nav-wrap-->
+</nav>
+{% block contents %}
+{% endblock %}
+<footer>
+    <div class="footer-left">
         <div class="footer-logo">
-          <img src="{% static 'img/katie-works-logo.png' %}" alt="" />
+            <img src="{% static 'img/katie-works-logo.png' %}" alt=""/>
         </div>
         <!--footer-logo-->
         <ul>
-          <li><a class="grey-a" href=""><i class="fab fa-facebook fa-lg"></i></a></li>
+            <li><a class="grey-a" href=""><i class="fab fa-facebook fa-lg"></i></a></li>
             <li><a class="grey-a" href=""><i class="fab fa-twitter fa-lg"></i></a></li>
             <li><a class="grey-a" href=""><i class="fab fa-instagram fa-lg"></i></a></li>
         </ul>
         <p>©katie works</p>
-      </div>
-      <!--footer-left-->
-      <div class="footer-right">
-        <a href="{% url 'contact' %}"><h3>Contact</h3></a>
-      </div>
-      <!--footer-right-->
-    </footer>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-    <script src="{% static 'js/base.js' %}"></script>
-    {% block custome_js %}
-    {% endblock %}
+    </div>
+    <!--footer-left-->
+    <div class="footer-right">
+        <span><a href="{% url 'contact' %}"><h3>Contact</h3></a></span>
+    </div>
+    <!--footer-right-->
+</footer>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"
+></script>
+<script src="{% static 'dest_js/base.min.js' %}"></script>
+{% block custome_js %}
+{% endblock %}
 </body>
 </html>

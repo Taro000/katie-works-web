@@ -2,12 +2,54 @@
 
 {% load static %}
 {% block custome_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style/works.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'dest_style/work_detail.min.css' %}"/>
 {% endblock %}
 
 {% block contents %}
     <main>
-        {{ object.name }}
-        {{ object.text }}
+        <div class="container">
+            <div id="img-section">
+                <div id="thumbnail">
+                    <img
+                            class="thumbnail-img show"
+                            alt=""
+                            src="{{ object.thumbnail.large.url }}"
+                    />
+                    {% for img in object.workimage_set.all %}
+                        <img class="thumbnail-img" alt="" src="{{ img.img.large.url }}"/>
+                    {% endfor %}
+                </div>
+                <!--thumbnail-->
+                <div id="img-carousel">
+                    <ul>
+                        <li class="img-window active">
+                            <img src="{{ object.thumbnail.thumbnail.url }}" alt=""/>
+                        </li>
+                        {% for img in object.workimage_set.all %}
+                            <li class="img-window">
+                                <img alt="" src="{{ img.img.thumbnail.url }}"/>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!--img-carousel-->
+            </div>
+            <!--img-section-->
+            <div id="text-section">
+                <div id="title" class="fade-in fade-in-up">
+                    <h1>{{ object.name }}</h1>
+                    <h5>{{ object.created_at|date:'Y/m/d' }}</h5>
+                </div>
+                <!--title-->
+                <p class="fade-in fade-in-up">
+                    {{ object.text }}
+                </p>
+            </div>
+            <!--text-section-->
+        </div>
     </main>
+{% endblock %}
+
+{% block custome_js %}
+    <script src="{% static 'dest_js/work_detail.min.js' %}"></script>
 {% endblock %}

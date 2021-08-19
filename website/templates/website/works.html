@@ -2,92 +2,122 @@
 
 {% load static %}
 {% block custome_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style/works.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'dest_style/works.min.css' %}"/>
 {% endblock %}
 
 {% block contents %}
     <main>
-      <div id="top-menu">
-        <div class="top-left">
-          <h1>Works</h1>
-          <ul>
-              <a class="grey-a" href=""><li>All</li></a>
-              <a class="grey-a" href=""><li>Logo</li></a>
-              <a class="grey-a" href=""><li>Catalogue</li></a>
-              <a class="grey-a" href=""><li>Advertisement</li></a>
-              <a class="grey-a" href=""><li>Others</li></a>
-          </ul>
-        </div>
-        <!--top-left-->
-        <div class="top-right">
-            <div class="page-button">
-                <h3>Prev</h3>
+        <div id="top-menu">
+            <div class="top-left">
+                <h1>Works</h1>
+                <ul>
+                    <a class="grey-a" href="{% url 'works' %}">
+                        <li>All</li>
+                    </a>
+                    <a class="grey-a" href="{% url 'works' %}?q=LG">
+                        <li>Logo</li>
+                    </a>
+                    <a class="grey-a" href="{% url 'works' %}?q=CL">
+                        <li>Catalogue</li>
+                    </a>
+                    <a class="grey-a" href="{% url 'works' %}?q=AD">
+                        <li>Advertisement</li>
+                    </a>
+                    <a class="grey-a" href="{% url 'works' %}?q=OT">
+                        <li>Others</li>
+                    </a>
+                </ul>
             </div>
-            <!--page-button-->
-            <div class="page-button">
-                <h3>Next</h3>
-            </div>
-            <!--page-button-->
-        </div>
-        <!--top-right-->
-      </div>
-      <!--top-menu-->
-      <div id="contents">
-        <ul>
-          {% if works_length >= 1 %}
-          <li class="fade-in fade-in-up">
-            {% for work in object_list|slice:'3' %}
-                <div class="content-card">
-                <a href="{% url 'work_detail' work.pk %}">
-                    <div class="card-img">
-                        <img src="{{ work.thumbnail.url }}" alt="" />
-                    </div>
-                    <h3>{{ work.name }}</h3>
-                </a>
+            <!--top-left-->
+            <div class="top-right">
+                <div class="page-button">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}"><h3>Prev</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Prev</h3></a>
+                    {% endif %}
                 </div>
-            {% endfor %}
-          </li>
-          {% endif %}
-          {% if works_length >= 4 %}
-              <li class="fade-in fade-in-up">
-                {% for work in object_list|slice:'3:6' %}
-                    <div class="content-card">
-                        <div class="card-img">
-                            <img src="{{ work.thumbnail.url }}" alt="" />
-                        </div>
-                        <h3>{{ work.name }}</h3>
-                    </div>
-                {% endfor %}
-              </li>
-          {% endif %}
-          {% if works_length >= 6 %}
-          <li class="fade-in fade-in-up">
-            {% for work in object_list|slice:'6:9' %}
-                <div class="content-card">
-                    <div class="card-img">
-                        <img src="{{ work.thumbnail.url }}" alt="" />
-                    </div>
-                    <h3>{{ work.name }}</h3>
+                <!--page-button-->
+                <div class="page-button">
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><h3>Next</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Next</h3></a>
+                    {% endif %}
                 </div>
-            {% endfor %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-      <!--contents-->
-      <div id="bottom-menu">
-          <div class="bottom-right">
-            <div class="page-button">
-                <h3>Prev</h3>
+                <!--page-button-->
             </div>
-            <!--page-button-->
-            <div class="page-button">
-                <h3>Next</h3>
+            <!--top-right-->
+        </div>
+        <!--top-menu-->
+        <div id="contents">
+            <ul>
+                {% if works_length >= 1 %}
+                    <li class="fade-in fade-in-up">
+                        {% for work in object_list|slice:'3' %}
+                            <div class="content-card">
+                                <a href="{% url 'work_detail' work.pk %}">
+                                    <div class="card-img">
+                                        <img src="{{ work.thumbnail.thumbnail.url }}" alt=""/>
+                                    </div>
+                                    <h3>{{ work.name }}</h3>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </li>
+                {% endif %}
+                {% if works_length >= 4 %}
+                    <li class="fade-in fade-in-up">
+                        {% for work in object_list|slice:'3:6' %}
+                            <div class="content-card">
+                                <a href="{% url 'work_detail' work.pk %}">
+                                    <div class="card-img">
+                                        <img src="{{ work.thumbnail.thumbnail.url }}" alt=""/>
+                                    </div>
+                                    <h3>{{ work.name }}</h3>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </li>
+                {% endif %}
+                {% if works_length >= 6 %}
+                    <li class="fade-in fade-in-up">
+                        {% for work in object_list|slice:'6:9' %}
+                            <div class="content-card">
+                                <a href="{% url 'work_detail' work.pk %}">
+                                    <div class="card-img">
+                                        <img src="{{ work.thumbnail.thumbnail.url }}" alt=""/>
+                                    </div>
+                                    <h3>{{ work.name }}</h3>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--contents-->
+        <div id="bottom-menu">
+            <div class="bottom-right">
+                <div class="page-button">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}"><h3>Prev</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Prev</h3></a>
+                    {% endif %}
+                </div>
+                <!--page-button-->
+                <div class="page-button">
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><h3>Next</h3></a>
+                    {% else %}
+                        <a href="#"><h3>Next</h3></a>
+                    {% endif %}
+                </div>
+                <!--page-button-->
             </div>
-            <!--page-button-->
-          </div>
-          <!--bottom-right-->
-      </div>
-      <!--bottom-menu-->
+            <!--bottom-right-->
+        </div>
+        <!--bottom-menu-->
     </main>
 {% endblock %}

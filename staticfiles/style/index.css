@@ -19,11 +19,36 @@
   letter-spacing: 0.05em;
 }
 
+/* Title SVG */
 .title-frame {
   height: 70px;
   width: 45%;
   margin-top: 15px;
   border: 1px solid grey;
+}
+
+.title-svg {
+  height: 100%;
+  width: 100%;
+}
+
+#mask_line {
+  stroke-dasharray: 2600px;
+  animation: h-written 6s infinite;
+  stroke: #fff;
+}
+
+@keyframes h-written {
+  0% {
+    stroke-dashoffset: 2600px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+
+#text {
+  mask: url(#mask_ani);
 }
 
 .top-right {
